@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <meta charset="UTF-8" />
+
+<body>
+<h1 th:text="${add} ? 'Create a User:' : 'Edit a User:'" />
+<br/><br/>
+<form th:action="${add} ? @{/users/add} : @{/users/{Id}/edit(Id=${user.id})}"
+      th:object="${user}" method="POST">
+    <table border="0">
+        <tr th:if="${user.id}">
+            <td>ID</td>
+            <td>:</td>
+            <td th:utext="${user.id}">...</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>:</td>
+            <td><input type="text" th:field="*{name}" /></td>
+        </tr>
+        <tr>
+            <td>Surname</td>
+            <td>:</td>
+            <td><input type="text" th:field="*{surname}" /></td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td>:</td>
+            <td><input type="number" th:field="*{age}" /></td>
+        </tr>
+
+    </table>
+    <input type="submit" th:value="${add} ? 'Create' : 'Update'" />
+</form>
+
+</body>
+</html>
