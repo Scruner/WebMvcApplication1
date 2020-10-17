@@ -1,4 +1,4 @@
-package ru.vdv.jm.contrillers;
+package ru.vdv.jm.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,14 +39,14 @@ public class UsersController {
         return "redirect:/users/";
     }
 
-    @GetMapping(value = {"/users/{id}/edit"})
+    @GetMapping(value = {"/users/edit/{id}"})
     public String showEditUser(Model model, @PathVariable int id) {
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
         return "user-edit";
     }
 
-    @PostMapping(value = {"/users/{id}/edit"})
+    @PostMapping(value = {"/users/edit/{id}"})
     public String updateUser(@PathVariable int id,
                              @ModelAttribute("user") User user) {
         user.setId(id);
@@ -61,7 +61,7 @@ public class UsersController {
         return "user";
     }
 
-    @GetMapping(value = {"/users/{id}/delete"})
+    @GetMapping(value = {"/users/delete/{id}"})
     public String showDeleteUserById(Model model, @PathVariable int id) {
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
