@@ -5,7 +5,7 @@
 <body>
 <h1>User</h1>
 <br/><br/>
-<div>
+<div th:if="${user}">
     <table border="0">
         <tr>
             <td>ID</td>
@@ -28,10 +28,14 @@
             <td th:utext="${user.age}">...</td>
         </tr>
     </table>
-    <br/>
-    <div class="logout">
-        <a href="/logout">logout</a>
-    </div>
+    <br/><br/>
+    <form th:method="POST" th:action="@{/admin/delete/{Id}(Id=${user.id})}" >
+        <input type="submit" value="Delete"/>
+    </form>
+    <br>
+</div>
+<div class="logout">
+    <a href="/logout">logout</a>
 </div>
 </body>
 </html>

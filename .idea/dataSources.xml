@@ -10,5 +10,14 @@
         <property name="serverTimezone" value="Europe/Moscow" />
       </driver-properties>
     </data-source>
+    <data-source source="LOCAL" name="springsecurity" uuid="63de9d43-48cd-49ec-947d-00ca71e4ba63">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/springsecurity</jdbc-url>
+      <driver-properties>
+        <property name="serverTimezone" value="Europe/Moscow" />
+      </driver-properties>
+    </data-source>
   </component>
 </project>

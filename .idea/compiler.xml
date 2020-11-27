@@ -6,7 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="web-mvc-application" />
         <module name="WebMvcApplication" />
+        <module name="WebMvcApplication1" />
       </profile>
     </annotationProcessing>
   </component>

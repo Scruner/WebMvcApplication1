@@ -5,6 +5,7 @@ import ru.vdv.jm.models.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
@@ -39,5 +40,12 @@ public class UserDaoImpl implements UserDao {
     public User getUserById(int id) {
         User user = entityManager.find(User.class, id);
         return user;
+    }
+
+    @Override
+    public User getUserByUsername(String name) {
+        TypedQuery<User> typedQuery = entityManager.createQuery("FROM User u where u.name=:name", User.class);
+        typedQuery.setParameter("name", name);
+        return typedQuery.getSingleResult();
     }
 }

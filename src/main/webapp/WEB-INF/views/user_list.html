@@ -5,9 +5,8 @@
 </head>
 <body>
 <h1>Users</h1>
-
 <div>
-    <a th:href="@{/users/add}">Add user</a>
+    <a th:href="@{/admin/add}">Add user</a>
 </div>
 <br/><br/>
 <div>
@@ -17,17 +16,23 @@
             <th>Name</th>
             <th>Surname</th>
             <th>Age</th>
+            <th>Role</th>
             <th>Edit</th>
         </tr>
         <tr th:each="user : ${users}">
             <!--            делаю активной кнопкой, поле ID в таблице-->
-            <td><a th:href="@{/users/{Id}(Id=${user.id})}" th:utext="${user.id}">...</a></td>
+            <td><a th:href="@{/admin/{Id}(Id=${user.id})}" th:utext="${user.id}">...</a></td>
             <td th:utext="${user.name}">...</td>
             <td th:utext="${user.surname}">...</td>
             <td th:utext="${user.age}">...</td>
-            <td><a th:href="@{/users/edit/{Id}(Id=${user.id})}">Edit</a></td>
+            <td th:utext="${user.roles}">...</td>
+            <td><a th:href="@{/admin/edit/{Id}(Id=${user.id})}">Edit</a></td>
         </tr>
     </table>
+    <br>
+</div>
+<div class="logout">
+    <a href="/logout">logout</a>
 </div>
 </body>
 </html>

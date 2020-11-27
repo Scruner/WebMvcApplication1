@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit user</title>
+</head>
+<body>
+<h1>Edit user</h1>
+<div>
+    <br/><br/>
+    <form action="edit/" method="POST" th:action="${user.getId()}"
+          th:object="${user}">
+        <td>ID:</td>
+        <td th:utext="${user.id}"></td>
+        <table border="0">
+            <tr th:if="${user.id}">
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="User name" th:field="*{name}"/></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="User surname" th:field="*{surname}"/></td>
+            </tr>
+            <tr>
+                <td><input type="number" placeholder="User age" th:field="*{age}"/></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="password" placeholder="My password" th:field="*{password}"/></td>
+            </tr>
+            <tr>
+                <td><label>User role</label><input type="checkbox" name="userCheck"></td>
+                <td><label>Admin role</label><input type="checkbox" name="adminCheck"></td>
+            </tr>
+        </table>
+        <input type="submit" th:value="Update"/>
+    </form>
+    <br>
+    <div class="logout">
+        <a href="/logout">logout</a>
+    </div>
+</div>
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Edit user</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div>-->
+<!--    <form action="edit/" method="post" th:action="${user.getId()}" th:object="${user}">-->
+<!--        <table>-->
+<!--            <tr>-->
+<!--                <td><h2>Edit</h2></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td><label>Login:</label></td>-->
+<!--                <td><input type="text" placeholder="My username" th:field="*{username}"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td><label>Password:</label></td>-->
+<!--                <td><input type="text" placeholder="My password" th:field="*{password}"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td><label>Name:</label></td>-->
+<!--                <td><input type="text" name="name" placeholder="My name" th:field="*{name}"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td><label>Surname:</label></td>-->
+<!--                <td><input type="text" name="surname" placeholder="My surname" th:field="*{surname}"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td><label>Age:</label></td>-->
+<!--                <td><input type="number" name="age" placeholder="My age" th:field="*{age}"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td><label>User role</label><input th:checked="${roles.contains('USER')} ? 'checked'" type="checkbox"-->
+<!--                                                   name="userCheck"></td>-->
+<!--                <td><label>Admin role</label><input type="checkbox" name="adminCheck"-->
+<!--                                                    th:checked="${roles.contains('ADMIN')} ? 'checked'"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>-->
+<!--                    <button type="submit">Submit</button>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--    </form>-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <a href="/admin/">Back</a>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
