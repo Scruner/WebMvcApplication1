@@ -18,7 +18,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
     private final LoginSuccessHandler loginSuccessHandler;
-    // private UserServiceImpl userServiceImpl;
+
 
     public SecurityConfig(UserDetailsService userDetailsService, LoginSuccessHandler loginSuccessHandler) {
         this.userDetailsService = userDetailsService;
@@ -30,10 +30,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
-    //    @Override
-//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication().withUser("ADMIN").password("ADMIN").roles("ADMIN");
-//    }
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
@@ -44,18 +40,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http.formLogin()
-//                // указываем страницу с формой логина
-//                .loginPage("/login")
-//                //указываем логику обработки при логине
-//                .successHandler(new LoginSuccessHandler())
-//                // указываем action с формы логина
-//                .loginProcessingUrl("/login")
-//                // Указываем параметры логина и пароля с формы логина
-//                .usernameParameter("j_username")
-//                .passwordParameter("j_password")
-//                // даем доступ к форме логина всем
-//                .permitAll();
 
         http.logout()
                 // разрешаем делать логаут всем
@@ -81,7 +65,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").anonymous()
                 .and().
                 formLogin().permitAll();
-//              .access("hasAnyRole('ADMIN')").anyRequest().authenticated();
     }
 
     @Bean

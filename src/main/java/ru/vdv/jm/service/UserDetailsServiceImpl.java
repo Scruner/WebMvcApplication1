@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import ru.vdv.jm.dao.UserDao;
 
 @Service
-public class UserDetailsServiceImpl  implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     private UserDao userDao;
 
