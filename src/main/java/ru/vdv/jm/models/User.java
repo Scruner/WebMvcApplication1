@@ -4,7 +4,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -28,7 +27,6 @@ public class User implements UserDetails {
     private int age;
 
     @Column(name = "password")
-    @Size(min = 2, message = "Не меньше 5 знаков")
     private String password;
 
 
