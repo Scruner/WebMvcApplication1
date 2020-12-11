@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.vdv.jm.dao.UserDao;
+import ru.vdv.jm.models.Role;
 import ru.vdv.jm.models.User;
 
 import javax.transaction.Transactional;
@@ -13,7 +14,7 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    private UserDao userDao;
+    private final UserDao userDao;
 
     @Autowired
     public UserServiceImpl(UserDao userDao) {
@@ -48,6 +49,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(int id) {
         return userDao.getUserById(id);
+    }
+
+    @Override
+    public Role getRoleByName(String role) {
+        return userDao.getRoleByName(role);
     }
 
 }

@@ -9,7 +9,9 @@ import ru.vdv.jm.models.User;
 import ru.vdv.jm.service.UserService;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/admin")
@@ -39,15 +41,17 @@ public class AdminController {
     public String addUser(@ModelAttribute("user") User user,
                           @RequestParam(required = false) boolean adminCheck,
                           @RequestParam(required = false) boolean userCheck) {
-        List<Role> roleList = new ArrayList<>();
+        Set<Role> roleList = new HashSet<>();
         if (adminCheck) {
-            roleList.add(new Role("ADMIN"));
-            user.setRoles(roleList);
+            Role role = userService.getRoleByName("ADMIN");
+            roleList.add(role);
+
         }
         if (userCheck) {
-            roleList.add(new Role("USER"));
-            user.setRoles(roleList);
+            Role role1 = userService.getRoleByName("USER");
+            roleList.add(role1);
         }
+        user.setRoles(roleList);
         userService.addUser(user);
         return "redirect:/admin";
     }
@@ -65,13 +69,13 @@ public class AdminController {
                              @RequestParam(required = false) boolean adminCheck,
                              @RequestParam(required = false) boolean userCheck) {
         user.setId(id);
-        List<Role> roleList = new ArrayList<>();
+        Set<Role> roleList = new HashSet<>();
         if (adminCheck) {
-            roleList.add(new Role("ADMIN"));
+            roleList.add(userService.getRoleByName("ADMIN"));
             user.setRoles(roleList);
         }
         if (userCheck) {
-            roleList.add(new Role("USER"));
+            roleList.add(userService.getRoleByName("USER"));
             user.setRoles(roleList);
         }
         userService.updateUser(user);

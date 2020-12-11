@@ -1,6 +1,7 @@
 package ru.vdv.jm.dao;
 
 import org.springframework.stereotype.Repository;
+import ru.vdv.jm.models.Role;
 import ru.vdv.jm.models.User;
 
 import javax.persistence.EntityManager;
@@ -46,6 +47,13 @@ public class UserDaoImpl implements UserDao {
     public User getUserByUsername(String name) {
         TypedQuery<User> typedQuery = entityManager.createQuery("FROM User u where u.name=:name", User.class);
         typedQuery.setParameter("name", name);
+        return typedQuery.getSingleResult();
+    }
+
+    @Override
+    public Role getRoleByName(String role) {
+        TypedQuery<Role> typedQuery = entityManager.createQuery( "FROM Role r WHERE r.name=:role", Role.class);
+        typedQuery.setParameter("role", role);
         return typedQuery.getSingleResult();
     }
 }
