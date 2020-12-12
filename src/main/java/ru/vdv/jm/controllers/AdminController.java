@@ -8,9 +8,7 @@ import ru.vdv.jm.models.Role;
 import ru.vdv.jm.models.User;
 import ru.vdv.jm.service.UserService;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -45,7 +43,6 @@ public class AdminController {
         if (adminCheck) {
             Role role = userService.getRoleByName("ADMIN");
             roleList.add(role);
-
         }
         if (userCheck) {
             Role role1 = userService.getRoleByName("USER");
@@ -71,13 +68,14 @@ public class AdminController {
         user.setId(id);
         Set<Role> roleList = new HashSet<>();
         if (adminCheck) {
-            roleList.add(userService.getRoleByName("ADMIN"));
-            user.setRoles(roleList);
+            Role role = new Role(1L, "ADMIN");
+            roleList.add(role);
         }
         if (userCheck) {
-            roleList.add(userService.getRoleByName("USER"));
-            user.setRoles(roleList);
+            Role role1 = new Role(2L, "USER");
+            roleList.add(role1);
         }
+        user.setRoles(roleList);
         userService.updateUser(user);
         return "redirect:/admin";
     }
